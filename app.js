@@ -1,5 +1,6 @@
 var express = require('express');
 var formidable = require('formidable');
+var util = require('util');
 const path = require('path')
 const PORT = process.env.PORT || 5000
 
@@ -16,29 +17,15 @@ app.get('/uploads/image.png', function(req, res){
 
 app.post('/', function (req, res){
 
-    try{
-        console.log("LEvel 1");
-        var form = new formidable.IncomingForm();
-        console.log("LEvel 2");
+    var form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+        res.writeHead(200, {'content-type': 'text/plain'});
+        res.write('received upload:\n\n');
+        res.end(util.inspect({fields: fields, files: files}));
+      });
 
-        form.parse(req);
-        console.log("LEvel 3");
+      return;
 
-        form.on('fileBegin', function (name, file){
-            file.path = path.join(__dirname, 'uploads/image.png');
-        });
-        console.log("LEvel 4");
-
-        form.on('file', function (name, file){
-            console.log('Uploaded image.png');
-            console.log("LEvel 5");
-        });
-
-    }catch(ex){
-        console.log("Det Sket sig", ex);
-    }
-
-    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, () => console.log(`Listening on ${ PORT }`))
