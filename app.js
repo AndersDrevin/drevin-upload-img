@@ -9,8 +9,8 @@ app.get('/', function (req, res){
     res.sendFile(path.join(__dirname, 'index.html'));
 });
 
-app.get('/image.png', function(req, res){
-    res.sendFile(path.join(__dirname, 'image.png'));
+app.get('/uploads/image.png', function(req, res){
+    res.sendFile(path.join(__dirname, 'uploads/image.png'));
     //res.sendFile(__dirname + '/uploads/image.png');
 });
 
@@ -25,7 +25,7 @@ app.post('/', function (req, res){
         console.log("LEvel 3");
 
         form.on('fileBegin', function (name, file){
-            file.path = path.join(__dirname, 'image.png');
+            file.path = path.join(__dirname, 'uploads/image.png');
         });
         console.log("LEvel 4");
 
