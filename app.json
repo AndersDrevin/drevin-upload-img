@@ -1,0 +1,7 @@
+{
+    "name": "adupload",
+    "description": "Very simple test upload",
+    "repository": "https://github.com/AndersDrevin/drevin-upload-img",
+    "keywords": ["node", "express", "heroku"]
+  }
+  
