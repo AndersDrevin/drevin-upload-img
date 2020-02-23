@@ -18,17 +18,21 @@ app.post('/', function (req, res){
 
     try{
         console.log("LEvel 1");
-    var form = new formidable.IncomingForm();
+        var form = new formidable.IncomingForm();
+        console.log("LEvel 2");
 
-    form.parse(req);
+        form.parse(req);
+        console.log("LEvel 3");
 
-    form.on('fileBegin', function (name, file){
-        file.path = path.join(__dirname, '/image.png');
-    });
+        form.on('fileBegin', function (name, file){
+            file.path = path.join(__dirname, '/image.png');
+        });
+        console.log("LEvel 4");
 
-    form.on('file', function (name, file){
-        console.log('Uploaded image.png');
-    });
+        form.on('file', function (name, file){
+            console.log('Uploaded image.png');
+            console.log("LEvel 5");
+        });
 
     }catch(ex){
         console.log("Det Sket sig", ex);
