@@ -20,7 +20,7 @@
 <a href="mailto:anders.drevin@gmail.com">Maillänk</a>
 <a href="tel:0705256781">Telefonlänk</a>
 <input type="text" id="firebase"></input>
-<p id="gpsPos"></p>
+<p id="gpsPos">GPS här</p>
 
 
 <script>
@@ -28,7 +28,7 @@
         webkit.messageHandlers.getLocation.postMessage("");
     }
     function getLocationCallback(lat, lng){
-        var x = document.getElementById("gpPos");
+        var x = document.getElementById("gpsPos");
         x.innerHTML = "Latitude: " + lat + 
         "<br>Longitude: " + lng; 
     }
