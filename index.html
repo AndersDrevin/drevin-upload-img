@@ -11,32 +11,46 @@
 </form>
 <br />
 
-<a href="tel:0705256781">Ring Anders</a>
-
-<br />
-
-<a href="mailto:anders.drevin@gmail.com">Mejla Anders</a>
-
 <hr />
- 
-<p>Positionering</p>
-<button onclick="getLocation()">Hämta POS</button>
-<p id="gpsPos"></p>
+<button onclick="getLocation()">Position</button>
+<a href="./native_refresh.html">LADDA OM</a>
+<button onclick="getFirebaseToken()">GetFirebaseToken</button>
+<button onclick="setSessionKey('HEJ')">SetSessionKey</button>
+<button onclick="setFirebaseCallback('setFirebaseData(`<data>`)')">set firebase callback</button>
+<a href="mailto:anders.drevin@gmail.com">Maillänk</a>
+<a href="tel:0705256781">Telefonlänk</a>
+<input type="text" id="firebase"></input>
 
 
 <script>
-    var x = document.getElementById("gpsPos");
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-      }
+    function getLocation(){
+        webkit.messageHandlers.getLocation.postMessage("");
     }
-    
-    function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude + 
-      "<br>Longitude: " + position.coords.longitude; 
+    function getLocationCallback(lat, lng){
+        var x = document.getElementById("gpPos");
+        x.innerHTML = "Latitude: " + lat + 
+        "<br>Longitude: " + lng; 
+    }
+
+    function getFirebaseToken(){
+        webkit.messageHandlers.firebaseToken.postMessage("");
+    }
+
+    //Answer from getFirebaseToken gets here.
+    function firebaseTokenCallback(token){
+        document.getElementById("firebase").value = token;
+    }
+
+    function setSessionKey(sk){
+        webkit.messageHandlers.setSessionKey.postMessage(sk);
+    }
+
+    function setFirebaseCallback(cb){
+        webkit.messageHandlers.setFirebaseCallback.postMessage(cb);
+    }
+
+    function setFirebaseData(value){
+        document.getElementById("firebase").value = value;
     }
     </script>
 </body>
