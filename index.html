@@ -21,11 +21,11 @@
  
 <p>Positionering</p>
 <button onclick="getLocation()">Hämta POS</button>
-<input type="text" id="gps-pos" />
+<p id="gpsPos"></p>
 
 
 <script>
-    var x = document.getElementById("gps-pos");
+    var x = document.getElementById("gpsPos");
     function getLocation() {
       if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
