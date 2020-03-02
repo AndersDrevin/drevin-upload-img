@@ -40,6 +40,8 @@
     //Answer from getFirebaseToken gets here.
     function firebaseTokenCallback(token){
         document.getElementById("firebase").value = token;
+        var x = document.getElementById("gpsPos");
+        x.innerHTML = token;
     }
 
     function setSessionKey(sk){
