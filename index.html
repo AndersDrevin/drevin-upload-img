@@ -21,9 +21,16 @@
 <a href="tel:0705256781">Telefonlänk</a>
 <input type="text" id="firebase"></input>
 <p id="gpsPos">GPS här</p>
+<br />
+<button id="gLogin" onclick="gLogin()">Google Login</button>
 
 
 <script>
+
+    function gLogin(){
+        webkit.messageHandlers.gLogin.postMessage("")
+    }
+
     function getLocation(){
         webkit.messageHandlers.getLocation.postMessage("");
     }
