@@ -23,12 +23,17 @@
 <p id="gpsPos">GPS här</p>
 <br />
 <button id="gLogin" onclick="gLogin()">Google Login</button>
+<button id="gLogout" onclick="gLogout()">Google Logout</button>
 
 
 <script>
 
     function gLogin(){
         webkit.messageHandlers.googleLogin.postMessage("")
+    }
+
+    function gLogout(){
+        webkit.messageHandlers.googleLogout.postMessage("")
     }
 
     function getLocation(){
