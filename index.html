@@ -55,10 +55,8 @@
 
     //Answer from isGoogleLoggedin gets here
     function googleIsLoggedInCallback(isLoggedIn){
-        if(isLogedIn == "true")
-            alert("logged in!");
-        else
-            alert("NOT lgged in (" + isLoggedIn + ")")
+        var x = document.getElementById("gLoggedIn");
+        x.innerHTML = isLoggedIn;
     }
 
     //Answer from getFirebaseToken gets here.
