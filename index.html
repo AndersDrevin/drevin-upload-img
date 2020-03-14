@@ -25,6 +25,7 @@
 <button id="gLogin" onclick="gLogin()">Google Login</button>
 <button id="gLogout" onclick="gLogout()">Google Logout</button>
 <button id="gLoggedIn" onclick="gLoggedIn()">Is logged in</button>
+<div id="gloginResult"></div>
 
 
 <script>
@@ -51,6 +52,13 @@
 
     function getFirebaseToken(){
         webkit.messageHandlers.firebaseToken.postMessage("");
+    }
+    //Login success - result is here.
+    function googleLoginCallback(userId, idToken, email, imageURL, givenName, familyName){
+        var x = document.getElementById("gloginResult");
+        x.innerHTML = `userId:${userId}, idToken:${idtoken}, email:${email}, imageURL:${imageURL},
+            givenName:${givenName}, familyName:${familyName}`;
+
     }
 
     //Answer from isGoogleLoggedin gets here
