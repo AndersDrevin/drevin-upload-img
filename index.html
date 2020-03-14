@@ -24,6 +24,7 @@
 <br />
 <button id="gLogin" onclick="gLogin()">Google Login</button>
 <button id="gLogout" onclick="gLogout()">Google Logout</button>
+<button id="gLoggedIn" onclick="gLoggedIn()">Is logged in</button>
 
 
 <script>
@@ -34,6 +35,9 @@
 
     function gLogout(){
         webkit.messageHandlers.googleLogout.postMessage("")
+    }
+    function gLoggedIn(){
+        webkit.messageHandlers.googleIsLoggedIn.postMessage("")
     }
 
     function getLocation(){
@@ -47,6 +51,14 @@
 
     function getFirebaseToken(){
         webkit.messageHandlers.firebaseToken.postMessage("");
+    }
+
+    //Answer from isGoogleLoggedin gets here
+    function googleIsLoggedInCallback(isLoggedIn){
+        if(isLogedIn == "true")
+            alert("logged in!");
+        else
+            alert("NOT lgged in (" + isLoggedIn + ")")
     }
 
     //Answer from getFirebaseToken gets here.
