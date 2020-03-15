@@ -25,7 +25,6 @@
 <button id="gLogin" onclick="gLogin()">Google Login</button>
 <button id="gLogout" onclick="gLogout()">Google Logout</button>
 <button id="gLoggedIn" onclick="gLoggedIn()">Google Is logged in</button>
-<button id="testButton" onclick="test()">Test</button>
 <div id="gloginResult" style="width: 400px; height: 100px;"></div>
 <hr />
 <button id="fLogin" onclick="fLogin()">Facebook Login</button>
@@ -37,24 +36,30 @@
 <script>
 
     function gLogin(){
+        //Call this to request a google login. Result is callbacked to googleLoginCallback
         webkit.messageHandlers.googleLogin.postMessage("")
     }
 
     function gLogout(){
+        //Call this to requst a google logout.
         webkit.messageHandlers.googleLogout.postMessage("")
     }
     function gLoggedIn(){
+        //Call this to see if google is logged in. Result is callbacked to googleIsLoggedInCallback
         webkit.messageHandlers.googleIsLoggedIn.postMessage("")
     }
 
     function fLogin(){
+        //Call this to request a facebook login. Result is callbacked to facebookLoginCallback
         webkit.messageHandlers.facebookLogin.postMessage("")
     }
 
     function fLogout(){
+        //Call this to request logout from facebook
         webkit.messageHandlers.facebookLogout.postMessage("")
     }
     function fLoggedIn(){
+        //Call this to see if facebook is logged in. Result is callbacked to facebookIsLoggedInCallback
         webkit.messageHandlers.facebookIsLoggedIn.postMessage("")
     }
 
@@ -69,10 +74,6 @@
 
     function getFirebaseToken(){
         webkit.messageHandlers.firebaseToken.postMessage("");
-    }
-
-    function test(){
-        googleLoginCallback("userId", "IdToken", "emial", "url", "givenName", "familyName")
     }
 
     //Login success - result is here.
